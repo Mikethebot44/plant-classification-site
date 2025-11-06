@@ -1,18 +1,9 @@
-import { Marquee, MarqueeWrap } from "@/components/marquee";
-import {
-  ScrollMask,
-  ScrollMaskContent,
-  ScrollMaskSvgWrap,
-  ScrollMaskWrap,
-  SvgScrollMask,
-} from "@/components/scroll-mask";
 import { About } from "@/sections/about";
 import { Achievements } from "@/sections/achievements";
 import { Hero } from "@/sections/hero";
 import { Process } from "@/sections/process";
 import { Services } from "@/sections/services";
 import ReactLenis from "lenis/react";
-import Image from "next/image";
 
 export default function Home() {
   return (

@@ -1,5 +1,6 @@
 "use client";
 import { BgMask } from "@/components/bg-mask";
+import { Logo } from "@/components/logo";
 import {
   AnimatedMenu,
   AnimatedMenuButton,
@@ -10,6 +11,7 @@ import {
 } from "@/components/systaliko-ui/animated-menu";
 import { ArrowUpRightIcon } from "lucide-react";
 import { Variants } from "motion";
+import Link from "next/link";
 
 const variants = {
   open: {
@@ -95,76 +97,83 @@ const menu_socials = [
 ];
 export function Header() {
   return (
-    <header className="fixed z-999 backdrop-blur-lg top-0 right-0 min-h-fit flex">
-      <BgMask className="after:bg-primary before:absolute before:bg-inherit before:block before:size-full before:inset-0 before:shadow-[inset_-1px_0_0_0_rgba(51,51,51,0.6)] bg-black/50 text-accent p-2.5 flex gap-4 justify-between items-center z-[999]">
-        <span className="pointer-events-none mix-blend-difference">
-          Contact us
-        </span>
-        <ArrowUpRightIcon className="pointer-events-none mix-blend-difference size-4" />
-      </BgMask>
-
-      <AnimatedMenu className="relative">
+    <header className="fixed z-999 backdrop-blur-lg w-full pl-8 flex gap-4 justify-between top-0 right-0 min-h-fit">
+      <div className="relative p-2 z-999">
+        <Link href="/">
+          <Logo className=" w-28" />
+        </Link>
+      </div>
+      <nav className="flex">
         <BgMask className="after:bg-primary before:absolute before:bg-inherit before:block before:size-full before:inset-0 before:shadow-[inset_-1px_0_0_0_rgba(51,51,51,0.6)] bg-black/50 text-accent p-2.5 flex gap-4 justify-between items-center z-[999]">
-          <AnimatedMenuButton className="px-6 py-2.5 mix-blend-difference gap-4">
-            <AnimatedMenuButtonToggleIcon />
-            <AnimatedMenuButtonLabel />
-          </AnimatedMenuButton>
+          <span className="pointer-events-none mix-blend-difference">
+            Contact us
+          </span>
+          <ArrowUpRightIcon className="pointer-events-none mix-blend-difference size-4" />
         </BgMask>
 
-        <AnimatedMenuList
-          menuListVariants={variants}
-          className="fixed top-0 right-0 origin-top z-[800] bg-accent/98 text-accent-foreground"
-        >
-          <div className="flex  px-6 justify-evenly flex-wrap gap-6 items-center size-full">
-            <div className="flex flex-col items-start gap-4">
-              {menu_links.map((item, i) => (
-                <BgMask
-                  className="after:bg-primary overflow-hidden"
-                  key={item.id}
-                >
-                  <AnimatedMenuItem
-                    className="p-2.5"
-                    variants={menuItemVariants}
-                    order={i}
+        <AnimatedMenu className="relative">
+          <BgMask className="after:bg-primary before:absolute before:bg-inherit before:block before:size-full before:inset-0 before:shadow-[inset_-1px_0_0_0_rgba(51,51,51,0.6)] bg-black/50 text-accent p-2.5 flex gap-4 justify-between items-center z-[999]">
+            <AnimatedMenuButton className="px-6 py-2.5 mix-blend-difference gap-4">
+              <AnimatedMenuButtonToggleIcon />
+              <AnimatedMenuButtonLabel />
+            </AnimatedMenuButton>
+          </BgMask>
+
+          <AnimatedMenuList
+            menuListVariants={variants}
+            className="fixed top-0 right-0 origin-top z-[800] bg-accent/98 text-accent-foreground"
+          >
+            <div className="flex  px-6 justify-evenly flex-wrap gap-6 items-center size-full">
+              <div className="flex flex-col items-start gap-4">
+                {menu_links.map((item, i) => (
+                  <BgMask
+                    className="after:bg-primary overflow-hidden"
+                    key={item.id}
                   >
-                    <a
-                      className="text-6xl font-medium"
-                      href={item.href}
-                      title={item.label}
-                      aria-label={`go to ${item.label} page`}
+                    <AnimatedMenuItem
+                      className="p-2.5"
+                      variants={menuItemVariants}
+                      order={i}
                     >
-                      {item.label}
-                    </a>
-                  </AnimatedMenuItem>
-                </BgMask>
-              ))}
-            </div>
-            <div className="flex flex-col items-start gap-4">
-              {menu_socials.map((item, i) => (
-                <BgMask
-                  className="after:bg-accent-foreground overflow-hidden"
-                  key={item.id}
-                >
-                  <AnimatedMenuItem
-                    variants={menuItemVariants}
-                    order={i + menu_links.length}
-                    className="p-2.5"
+                      <a
+                        className="text-6xl font-medium"
+                        href={item.href}
+                        title={item.label}
+                        aria-label={`go to ${item.label} page`}
+                      >
+                        {item.label}
+                      </a>
+                    </AnimatedMenuItem>
+                  </BgMask>
+                ))}
+              </div>
+              <div className="flex flex-col items-start gap-4">
+                {menu_socials.map((item, i) => (
+                  <BgMask
+                    className="after:bg-accent-foreground overflow-hidden"
+                    key={item.id}
                   >
-                    <a
-                      className="text-xl uppercase text-muted-foreground"
-                      href={item.href}
-                      title={item.label}
-                      aria-label={`go to ${item.label} page`}
+                    <AnimatedMenuItem
+                      variants={menuItemVariants}
+                      order={i + menu_links.length}
+                      className="p-2.5"
                     >
-                      {item.label}
-                    </a>
-                  </AnimatedMenuItem>
-                </BgMask>
-              ))}
+                      <a
+                        className="text-xl uppercase text-muted-foreground"
+                        href={item.href}
+                        title={item.label}
+                        aria-label={`go to ${item.label} page`}
+                      >
+                        {item.label}
+                      </a>
+                    </AnimatedMenuItem>
+                  </BgMask>
+                ))}
+              </div>
             </div>
-          </div>
-        </AnimatedMenuList>
-      </AnimatedMenu>
+          </AnimatedMenuList>
+        </AnimatedMenu>
+      </nav>
     </header>
   );
 }
