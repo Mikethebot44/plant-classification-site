@@ -1,5 +1,10 @@
 "use client";
-import { motion, ValueKeyframesDefinition, Variants } from "motion/react";
+import {
+  motion,
+  useReducedMotion,
+  ValueKeyframesDefinition,
+  Variants,
+} from "motion/react";
 
 interface PropsTextWave extends React.HtmlHTMLAttributes<HTMLSpanElement> {
   text: string;
@@ -20,7 +25,7 @@ export const TextWave = ({
   ...props
 }: PropsTextWave) => {
   const letters = text.split("");
-
+  const reducedMotion = useReducedMotion();
   const perspective = {
     initial: {
       fontSize: fontSizes[0],
@@ -35,7 +40,7 @@ export const TextWave = ({
         delay: delayTime + i * 0.05,
         duration: 0.7,
         ease: "easeIn",
-        repeat: Infinity, // Repeat the animation infinitely
+        repeat: reducedMotion ? 0 : Infinity, // Repeat the animation infinitely
         repeatDelay: 5, // Delay of 5 seconds between repeats
       },
     }),
