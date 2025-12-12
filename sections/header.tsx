@@ -105,10 +105,14 @@ export function Header() {
       </div>
       <nav className="flex">
         <BgMask className="after:bg-primary before:absolute before:bg-inherit before:block before:size-full before:inset-0 before:shadow-[inset_-1px_0_0_0_rgba(51,51,51,0.6)] bg-black/50 text-accent p-2.5 flex gap-4 justify-between items-center z-[999]">
-          <span className="pointer-events-none mix-blend-difference">
-            Contact us
-          </span>
-          <ArrowUpRightIcon className="pointer-events-none mix-blend-difference size-4" />
+          <Link
+            href="/sign-in"
+            className="flex items-center gap-4 mix-blend-difference"
+            aria-label="Sign in"
+          >
+            <span>Sign in</span>
+            <ArrowUpRightIcon className="pointer-events-none mix-blend-difference size-4" />
+          </Link>
         </BgMask>
 
         <AnimatedMenu className="relative">
